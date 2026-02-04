@@ -1,0 +1,14 @@
+[project]
+name = "project-chimera"
+version = "0.1.0"
+description = "Autonomous Influencer Agency with Hierarchical Swarms."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp>=0.1.0",
+    "coinbase-agentkit-browser-sdk>=0.0.5",
+    "python-dotenv>=1.0.1",
+]
+
+[tool.uv]
+managed = true
