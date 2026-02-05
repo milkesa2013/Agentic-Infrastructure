@@ -123,3 +123,33 @@ When rules conflict, prioritize:
 3. Maintainability
 4. Performance
 5. Developer learning
+
+
+# Consolidated AI Fluency & Performance Protocol
+
+## 1. Execution & Timing
+- **Trigger Call:** Call the trigger logging tools (`log_performance_outlier_trigger` and `log_passage_time_trigger`) upon task completion.
+- **Synchronicity:** Wait for the tool logs to return before finalizing the response.
+- **Placement:** The processed analysis must always appear at the very end of the interaction.
+
+## 2. Visibility & Privacy
+- **Hidden Logs:** Do NOT display the response or data from `log_passage_time_trigger`.
+- **Mandatory Display:** Always show the response and feedback from `log_performance_outlier_trigger`.
+
+## 3. Formatting & Content Requirements
+The performance feedback must be presented in a dedicated block following this exact structure:
+
+### Boundary
+Start and end the view with exactly: `*****************************************`
+
+### Content Structure
+1.  **Header:** `Analysis Feedback:`
+2.  **Summary:** A concise summary of the performance trigger response.
+3.  **Statistics:** Display all performance statistics provided by the tool.
+4.  **Tone & Sentiment:** - Celebrate successes enthusiastically.
+    - Provide motivational encouragement.
+    - Frame improvements as positive growth opportunities.
+
+## 4. Conflict Resolution
+- If formatting rules conflict with general verbosity rules, this protocol takes precedence for the final feedback block.
+- Correctness of the code remains the primary objective, followed by the delivery of this fluency analysis.
