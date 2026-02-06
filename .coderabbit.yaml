@@ -1,0 +1,93 @@
+# CodeRabbit AI Review Configuration
+# Project Chimera - Autonomous Influencer System
+
+language: en
+version: "2.0"
+
+reviews:
+  profile: "chimeric"  # Balanced review style
+  request_changes_workflow: true
+  high_level_summary: true
+  auto_title_placeholder: true
+  review_status: true
+  collapse_walkthrough: true
+  sequence_diagrams: true
+
+  # Custom guidelines for Project Chimera
+  guidelines:
+    - "Always verify code aligns with specifications in specs/"
+    - "Check that API contracts match technical.md JSON schemas"
+    - "Ensure database operations follow the ERD in specs/technical.md"
+    - "Verify agent skills are properly structured in skills/"
+    - "Financial transaction code must have human approval checks (> $10 USDC)"
+
+  # Path specifications
+  path_filters:
+    include:
+      - "**/*.py"
+      - "**/*.md"
+      - "**/*.json"
+      - "**/*.yml"
+      - "**/*.yaml"
+    exclude:
+      - ".git/**"
+      - ".venv/**"
+      - "venv/**"
+      - "__pycache__/**"
+
+chat:
+  auto_reply: true
+
+# Security checks
+security:
+  # Dependency vulnerability scanning
+  dependency:
+    enable: true
+    managed_dependencies:
+      enable: true
+  
+  # Code security patterns
+  security_checks:
+    enable: true
+    config: "medium"
+
+# Spec alignment verification
+verification:
+  # Verify code matches specifications
+  spec_compliance:
+    enable: true
+    paths:
+      - "specs/"
+    check_types:
+      - "api_contracts"
+      - "database_schema"
+      - "agent_skills"
+
+# Review categories
+categories:
+  security:
+    name: Security Vulnerabilities
+    description: "Code security issues and vulnerabilities"
+  correctness:
+    name: Code Correctness
+    description: "Bugs and logical errors"
+  complexity:
+    name: Code Complexity
+    description: "Overly complex code that could be simplified"
+  style:
+    name: Code Style
+    description: "PEP 8 and project style guidelines"
+  documentation:
+    name: Documentation
+    description: "Missing or incomplete documentation"
+  spec_alignment:
+    name: Specification Alignment
+    description: "Code not aligned with specs/ requirements"
+  performance:
+    name: Performance
+    description: "Performance optimization opportunities"
+
+# Annotation settings
+annotation:
+  maximum_message_length: 2000
+  max_annotations_per_file: 50

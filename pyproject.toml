@@ -1,14 +1,59 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "project-chimera"
 version = "0.1.0"
-description = "Autonomous Influencer Agency with Hierarchical Swarms."
+description = "Hierarchical Swarm Architecture for Autonomous Content Generation"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "fastmcp>=0.1.0",
-    "coinbase-agentkit-browser-sdk>=0.0.5",
-    "python-dotenv>=1.0.1",
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "Project Chimera Team" }
+]
+keywords = ["ai", "agents", "swarm", "content-generation", "mcp"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 
-[tool.uv]
-managed = true
+dependencies = [
+    # Core dependencies - minimal for skeleton
+    "pydantic>=2.0.0",
+    "httpx>=0.27.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.4.0",
+    "mypy>=1.9.0",
+    "black>=24.0.0",
+    "httpx>=0.27.0",
+]
+
+[project.scripts]
+chimera = "chimera.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "W"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
