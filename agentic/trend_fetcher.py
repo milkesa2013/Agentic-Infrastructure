@@ -26,7 +26,8 @@ class Trend(BaseModel):
     keyword: str = Field(..., max_length=255)
     velocity: int = Field(..., ge=0)
     sentiment: Optional[float] = Field(None, ge=-1, le=1)
-    source: str = Field(..., regex=r"twitter|moltbook|instagram")
+    source: str = Field(..., pattern=r"^(twitter|moltbook|instagram)$")
+
     detected_at: datetime
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
